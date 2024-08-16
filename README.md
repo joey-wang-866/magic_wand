@@ -31,6 +31,6 @@
 
 ## Train YOLOv10
     cd yolov10
-    yolo detect train data=D:\pycharm\magic_wand\dataset\data.yaml model=yolov10x.yaml epochs=30 batch=4 imgsz=640 device=0
+    yolo detect train data=D:\pycharm\magic_wand\datasets\data.yaml model=yolov10x.yaml epochs=30 batch=4 imgsz=640 device=0
 
 

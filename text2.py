@@ -1,11 +1,11 @@
-"""修改特定開頭的那一行為某一數字"""
+"""修改每一行為同一數字"""
 
 import os
 import tkinter as tk
 from tkinter import filedialog
 
-origin_num = 2
-modify_num = 10
+change_num = 7
+
 
 def check_and_fix_first_digit_in_all_lines(directory):
     txt_files = [f for f in os.listdir(directory) if f.endswith('.txt')]
@@ -19,10 +19,12 @@ def check_and_fix_first_digit_in_all_lines(directory):
                 modified = False
 
                 for i, line in enumerate(lines):
-                    if line.startswith(str(origin_num)):
-                        # 修改每行的開頭為 '2'
-                        lines[i] = str(modify_num) + line[1:]
+                    if line and line[0].isdigit() and line[0] != str(change_num):
+                        # 修改每行的開頭為 '0'
+                        lines[i] = str(change_num) + line[1:]
                         modified = True
+                    elif line and not line[0].isdigit():
+                        print(f"檔案 {txt_file} 的第 {i + 1} 行開頭不是數字，無法修正。")
 
                 if modified:
                     file.seek(0)
@@ -34,17 +36,19 @@ def check_and_fix_first_digit_in_all_lines(directory):
             print(f"讀取檔案 {txt_file} 時發生錯誤: {e}")
 
     if modified_files:
-        print("以下檔案的行開頭已被修改：")
+        print(f"以下檔案的行開頭已被修改為 {str(change_num)}：")
         for modified_file in modified_files:
             print(modified_file)
     else:
-        print("沒有檔案需要修改，或所有符合條件的行已被修正。")
+        print(f"所有檔案的行開頭都已經是數字 {str(change_num)}，或沒有可修正的檔案。")
+
 
 def select_folder():
     root = tk.Tk()
     root.withdraw()  # 隱藏主視窗
     folder_selected = filedialog.askdirectory()  # 開啟資料夾選擇對話框
     return folder_selected
+
 
 if __name__ == "__main__":
     folder_path = select_folder()
