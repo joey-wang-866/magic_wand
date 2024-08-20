@@ -26,6 +26,7 @@ def distance(boxes):
             print("dog")
         if cls[i] == 4:
             print("motorcycle")
+            distance.append((foc * real_height_motorcycle)/h)
         if cls[i] == 5:
             print("stairs")
             distance.append((foc * real_height_person)/h)

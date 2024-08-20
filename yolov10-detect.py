@@ -3,7 +3,7 @@ import supervision as sv
 from ultralytics import YOLO
 import distance
 
-model = YOLO(f'best29.pt')
+model = YOLO(f'best45.pt')
 bounding_box_annotator = sv.BoundingBoxAnnotator()
 label_annotator = sv.LabelAnnotator()  
 cap=cv2.VideoCapture('test2.mp4')
@@ -17,11 +17,13 @@ while True:
     if not ret:
         break
     results = model(frame)[0]
+    # print(results)
     boxes = len(results.boxes.xywh.tolist())
     if boxes != 0:
         dist = distance.distance(boxes=results.boxes)
         print(dist)
     detections = sv.Detections.from_ultralytics(results)
+    print(detections)
     annotated_image = bounding_box_annotator.annotate(scene=frame, detections=detections)
     annotated_image = label_annotator.annotate(scene=annotated_image, detections=detections)
     annotated_image = cv2.resize(annotated_image, (128*5, 72*5), interpolation=cv2.INTER_AREA)
