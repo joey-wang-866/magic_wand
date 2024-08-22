@@ -1,12 +1,12 @@
 import cv2
 import supervision as sv
-from ultralytics import YOLOv10
+from ultralytics import YOLO
 import distance
 
-model = YOLOv10(f'trained_weight/best.pt')
+model = YOLO(f'best50_v8x_d3_no_stairs.pt')
 bounding_box_annotator = sv.BoundingBoxAnnotator()
 label_annotator = sv.LabelAnnotator()
-cap=cv2.VideoCapture('video/V_20240821_125044_ES5.mp4')
+cap=cv2.VideoCapture('test.mp4')
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 if not cap.isOpened():
