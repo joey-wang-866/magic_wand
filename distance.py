@@ -5,7 +5,8 @@ foc = 2660
 real_height_car = 1.57
 real_height_person = 1.70
 real_height_motorcycle = 1.30
-real_height_list = [1, 1.57, 0.5, 1.2, 0, 0.7, 1.35, 1.3, 1.7, 0, 0, 0, 0]
+real_height_list = [1, 1.5, 0.5, 1.2, 0, 0.7, 1.35, 1.3, 1.7, 0, 0, 0, 0]
+
 
 def distance(results):
     boxes = results.boxes
@@ -21,8 +22,5 @@ def distance(results):
             if cls[i] == name:
                 print(f'Name:{names[j]}')
                 distance.append((foc * real_height_list[j]) / h)
-
-
-
 
     return distance

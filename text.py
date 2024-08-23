@@ -4,8 +4,8 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 
-origin_num = 2
-modify_num = 10
+origin_num = 6
+modify_num = 12
 
 def check_and_fix_first_digit_in_all_lines(directory):
     txt_files = [f for f in os.listdir(directory) if f.endswith('.txt')]

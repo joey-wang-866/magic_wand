@@ -4,7 +4,7 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 
-change_num = 7
+change_num = 6
 
 
 def check_and_fix_first_digit_in_all_lines(directory):
