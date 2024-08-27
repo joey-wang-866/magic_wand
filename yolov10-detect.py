@@ -46,7 +46,7 @@ while True:
         dist = distance.distance(results=results)
         print(f'Distance: {dist}')
 
-    # 轉換偵測結果為 Supervision 格式
+    # 轉換偵測結果為 Supervision 的格式
     detections = sv.Detections.from_ultralytics(results)
     annotated_image = bounding_box_annotator.annotate(scene=frame, detections=detections)
 
